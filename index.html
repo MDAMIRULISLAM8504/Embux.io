@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMBUX - Online Work & Account Marketplace</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #6c5ce7;
+            --secondary-color: #a29bfe;
+            --dark-color: #2d3436;
+            --light-color: #f9f9f9;
+            --success-color: #00b894;
+            --telegram-color: #0088cc;
+            --instagram-color: #E4405F;
+            --gmail-color: #DB4437;
+        }
+
+        body {
+            background-color: #f5f7ff;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(108, 92, 231, 0.2);
+        }
+
+        .logo {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .telegram-channel {
+            background-color: var(--telegram-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .telegram-channel i {
+            margin-right: 8px;
+        }
+
+        .telegram-channel:hover {
+            background-color: #0077b5;
+            color: white;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-header {
+            padding: 1.5rem;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+
+        .service-header i {
+            font-size: 2rem;
+            margin-right: 1rem;
+        }
+
+        .service-header h3 {
+            font-size: 1.4rem;
+        }
+
+        .instagram-bg {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+        }
+
+        .telegram-bg {
+            background-color: var(--telegram-color);
+        }
+
+        .gmail-bg {
+            background-color: var(--gmail-color);
+        }
+
+        .service-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-content p {
+            margin-bottom: 1.5rem;
+            color: #555;
+            flex-grow: 1;
+        }
+
+        .visit-btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.3s;
+            margin-top: auto;
+        }
+
+        .visit-btn:hover {
+            background-color: #5a4fcf;
+        }
+
+        /* Account Types */
+        .account-types {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .account-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            width: 280px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .account-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .instagram-color {
+            color: #E4405F;
+        }
+
+        .gmail-color {
+            color: #DB4437;
+        }
+
+        .account-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .footer-about {
+            flex: 1;
+            min-width: 300px;
+            margin-right: 2rem;
+        }
+
+        .footer-links {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-links h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 0;
+                text-align: center;
+                padding: 0.8rem 0;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .telegram-channel {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .account-types {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+
+            .footer-about {
+                margin-right: 0;
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">EMBUX</div>
+            <p class="tagline">Welcome </p>
+            <p class="tagling">EmBux — Earn on simple tasks. Instant payouts, repeatable jobs, and real rewards.</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <div class="logo" style="font-size: 1.8rem; color: var(--primary-color);">EMBUX</div>
+            
+            <div class="mobile-menu" id="mobileMenu">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#accounts">Dollar bay/sell</a></li>
+                <li><a href="#channel">Telegram Channel</a></li>
+            </ul>
+            
+            <a href="https://t.me/EMBUX8504" target="_blank" class="telegram-channel">
+                <i class="fab fa-telegram-plane"></i> Join Telegram Channel
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content container" id="home">
+        <!-- Services Section -->
+        <section id="services">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>EmBux — Earn on simple tasks. Instant payouts, repeatable jobs, and real rewards.</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Instagram Account Selling Website -->
+                <div class="service-card">
+                    <div class="service-header instagram-bg">
+                        <i class="fab fa-instagram"></i>
+                        <h3>Instagram Account sell Visit Website 👇</h3>
+                    </div>
+                    <div class="service-content">
+                        <p></p>
+                        <a href="http://embux.io/?ref=289" target="_blank" class="visit-btn">Visit Website</a>
+                    </div>
+                </div>
+                
+                <!-- Telegram Bot: GoFastBux -->
+                <div class="service-card">
+                    <div class="service-header telegram-bg">
+                        <i class="fab fa-telegram"></i>
+                        <h3>GoFastBux Telegram Bot 👇</h3>
+                    </div>
+                    <div class="service-content">
+                        <p></p>
+                        <a href="https://t.me/gofastbux_bot?start=7148933505" target="_blank" class="visit-btn">Start Earning</a>
+                    </div>
+                </div>
+                
+                <!-- Telegram Bot: EasyFarmerBux -->
+                <div class="service-card">
+                    <div class="service-header telegram-bg">
+                        <i class="fab fa-telegram"></i>
+                        <h3> EasyFarmerBux Telegram Bot 👇</h3>
+                    </div>
+                    <div class="service-content">
+                        <p></p>
+                        <a href="https://t.me/easyfarmerbux_bot?start=7148933505" target="_blank" class="visit-btn">Start Earning</a>
+                    </div>
+                </div>
+                
+                <!-- Gmail Account Selling Bot -->
+                <div class="service-card">
+                    <div class="service-header gmail-bg">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Gmail Account sell 👇</h3>
+                    </div>
+                    <div class="service-content">
+                        <p></p>
+                        <a href="https://t.me/easy_money_bux_bot?start=7148933505" target="_blank" class="visit-btn">Sell Gmail Accounts</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Account Types Section -->
+        <section id="accounts">
+            <div class="section-title">
+                <h2>Dollar bay/sell </h2>
+                <p>Welcome to our exchange platform!
+                We have been providing dollar buy-sell services with utmost honesty for a long time. We are a reliable medium for freelancers to cash out their hard-earned income at the right price and in the fastest time.</p>
+            </div>
+            
+            <div class="account-types">
+           
+                
+           <div class="service-card">
+           <div class="service-header gmail-bg">
+           <i class="fas fa-envelope"></i>
+           <h3> 💳 Dollar bay/sell website Link 👇 </h3>
+           </div>
+           <div class="service-content">
+           <p></p>
+           <a href="https://mdamirulislam8504.github.io/DollarValy.io/" target="_blank" class="visit-btn">Visit Website</a>
+            </div>
+        </section>
+        
+        <!-- Telegram Channel Section -->
+        <section id="channel">
+            <div class="section-title">
+                <h2>Join Our Telegram Channel</h2>
+                <p>Stay updated with the latest offers, new earning methods, and exclusive deals</p>
+            </div>
+            
+            <div class="service-card" style="max-width: 600px; margin: 0 auto;">
+                <div class="service-header telegram-bg">
+                    <i class="fab fa-telegram-plane"></i>
+                    <h3>EMBUX Telegram Channel</h3>
+                </div>
+                <div class="service-content">
+                    <p>Join our official Telegram channel to get regular updates about new earning opportunities, account listings, and exclusive promotions. Be the first to know about new features and platforms.</p>
+                    <a href="https://t.me/EMBUX8504" target="_blank" class="visit-btn">
+                        <i class="fab fa-telegram-plane"></i> Join EMBUX Channel
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">EMBUX</div>
+                    <p>EmBux — Earn on simple tasks. Instant payouts, repeatable jobs, and real rewards.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="http://embux.io/?ref=289" target="_blank">Instagram Account Store</a></li>
+                        <li><a href="https://t.me/gofastbux_bot?start=7148933505" target="_blank">GoFastBux Bot</a></li>
+                        <li><a href="https://t.me/easyfarmerbux_bot?start=7148933505" target="_blank">EasyFarmerBux Bot</a></li>
+                        <li><a href="https://t.me/easy_money_bux_bot?start=7148933505" target="_blank">Gmail Account Bot</a></li>
+                        <li><a href="https://t.me/EMBUX8504" target="_blank">Telegram Channel</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Dollar bay/sell</h4>
+                    <ul>
+                        <li><a href="#accounts"></a></li>
+                        <li><a href="#accounts">Dollar bay/sell</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2026 MD AMIRUL ISLAM EMBUX</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
