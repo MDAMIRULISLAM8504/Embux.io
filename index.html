@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMBUX - Ways to earn money from home</title>
+    <meta name="description" content="EmBux - Earn money by completing simple online tasks. Instant payouts, repeatable jobs, and real rewards for Facebook, Instagram, Gmail accounts and more.">
+    <meta name="keywords" content="earn money online, Facebook accounts, Instagram accounts, Gmail accounts, dollar exchange, Telegram bot">
+    <meta property="og:title" content="EMBUX - Ways to earn money from home">
+    <meta property="og:description" content="Earn on simple tasks. Instant payouts, repeatable jobs, and real rewards.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.4s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        :root {
+            --primary-color: #6c5ce7;
+            --secondary-color: #a29bfe;
+            --dark-color: #2d3436;
+            --light-color: #f9f9f9;
+            --success-color: #00b894;
+            --telegram-color: #0088cc;
+            --instagram-color: #E4405F;
+            --gmail-color: #DB4437;
+            --facebook-color: #1877F2;
+            --bg-color: #f5f7ff;
+            --card-bg: white;
+            --text-color: #2d3436;
+            --text-light: #666;
+            --shadow: rgba(0, 0, 0, 0.05);
+            --header-bg: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            --nav-bg: white;
+            --footer-bg: #2d3436;
+            --border-color: #eee;
+        }
+
+        .dark-mode {
+            --primary-color: #7c6ef7;
+            --secondary-color: #b2a8fe;
+            --dark-color: #121212;
+            --light-color: #1e1e1e;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #f0f0f0;
+            --text-light: #aaa;
+            --shadow: rgba(0, 0, 0, 0.3);
+            --header-bg: linear-gradient(135deg, #5a4fcf, #7c6ef7);
+            --nav-bg: #1a1a1a;
+            --footer-bg: #1a1a1a;
+            --border-color: #333;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Dark Mode Toggle & Time Display - IMPROVED */
+        .mode-toggle-container {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .time-display {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 10px 15px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: 0 6px 20px rgba(108, 92, 231, 0.3);
+            text-align: center;
+            min-width: 150px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transform-style: preserve-3d;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .time-display:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 10px 25px rgba(108, 92, 231, 0.4);
+        }
+
+        /* IMPROVED Dark Mode Button */
+        .dark-mode-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 8px 25px var(--shadow);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .dark-mode-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #8a7cff, #6c5ce7);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .dark-mode-btn:hover::before {
+            opacity: 1;
+        }
+
+        .dark-mode-btn:hover {
+            transform: rotate(180deg) scale(1.15);
+            box-shadow: 0 12px 30px rgba(108, 92, 231, 0.4);
+        }
+
+        .dark-mode-btn i {
+            transition: transform 0.5s ease;
+        }
+
+        .dark-mode-btn:hover i {
+            transform: scale(1.2);
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--header-bg);
+            color: white;
+            padding: 2.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(108, 92, 231, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            background: linear-gradient(to right, #ffffff, #e0e0ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0.5rem auto;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--nav-bg);
+            box-shadow: 0 4px 15px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2.5rem;
+            position: relative;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 1rem;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links li::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            left: 0;
+            bottom: -5px;
+            transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 3px;
+        }
+
+        .nav-links li:hover::after {
+            width: 100%;
+        }
+
+        .telegram-channel {
+            background: linear-gradient(135deg, var(--telegram-color), #24a1de);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 12px rgba(0, 136, 204, 0.3);
+            border: none;
+        }
+
+        .telegram-channel i {
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+
+        .telegram-channel:hover {
+            background: linear-gradient(135deg, #0077b5, var(--telegram-color));
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 136, 204, 0.4);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+            padding: 0.5rem;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .mobile-menu:hover {
+            background-color: var(--border-color);
+            transform: rotate(90deg);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+            display: inline-block;
+            position: relative;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 1.5rem auto 0;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Services Grid - Improved Layout */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 5rem;
+        }
+
+        .service-card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.1), transparent);
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 40px var(--shadow);
+        }
+
+        .service-header {
+            padding: 2rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .service-header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(0,0,0,0.1), transparent);
+            z-index: -1;
+        }
+
+        .service-header i {
+            font-size: 2.5rem;
+            margin-right: 1.2rem;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));
+        }
+
+        .service-header h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .instagram-bg {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+        }
+
+        .telegram-bg {
+            background: linear-gradient(45deg, #0088cc, #24a1de);
+        }
+
+        .gmail-bg {
+            background: linear-gradient(45deg, #DB4437, #EA4335);
+        }
+
+        .service-content {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-content p {
+            margin-bottom: 1.8rem;
+            color: var(--text-light);
+            flex-grow: 1;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .visit-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-top: auto;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+            gap: 10px;
+        }
+
+        .visit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .visit-btn:hover::before {
+            left: 100%;
+        }
+
+        .visit-btn:hover {
+            background: linear-gradient(135deg, #5a4fcf, #8a7cff);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(108, 92, 231, 0.4);
+        }
+
+        .visit-btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Account Types */
+        .account-types {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 5rem;
+            flex-wrap: wrap;
+        }
+
+        .account-types .service-card {
+            max-width: 400px;
+            min-width: 300px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--footer-bg);
+            color: white;
+            padding: 4rem 0 2.5rem;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+            gap: 3rem;
+        }
+
+        .footer-logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.2rem;
+            color: white;
+            background: linear-gradient(to right, #ffffff, #a29bfe);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        .footer-about {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .footer-about p {
+            color: #ddd;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .footer-links {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-links h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1.8rem;
+            color: var(--secondary-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links h4::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background: var(--secondary-color);
+            bottom: 0;
+            left: 0;
+            border-radius: 2px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .footer-links li:hover {
+            transform: translateX(5px);
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a::before {
+            content: '→';
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover::before {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2.5rem;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 0.95rem;
+        }
+
+        /* Enhanced Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--primary-color), var(--secondary-color));
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(var(--secondary-color), var(--primary-color));
+        }
+
+        /* Accessibility Improvements */
+        .visit-btn:focus,
+        .dark-mode-btn:focus,
+        .telegram-channel:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            
+            .dark-mode-btn:hover,
+            .service-card:hover,
+            .visit-btn:hover,
+            .telegram-channel:hover {
+                transform: none !important;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .services-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 2rem;
+            }
+            
+            .mode-toggle-container {
+                top: 90px;
+                right: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--nav-bg);
+                flex-direction: column;
+                padding: 1.5rem 0;
+                box-shadow: 0 10px 20px var(--shadow);
+                border-top: 1px solid var(--border-color);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 0;
+                text-align: center;
+                padding: 1rem 0;
+                width: 100%;
+            }
+
+            .nav-links li:hover {
+                background-color: var(--border-color);
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 0.5rem 2rem;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .telegram-channel {
+                margin-top: 1.5rem;
+                justify-content: center;
+                width: 100%;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .account-types {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 2.5rem;
+            }
+
+            .footer-about {
+                margin-right: 0;
+                margin-bottom: 0;
+            }
+
+            .mode-toggle-container {
+                top: 80px;
+                right: 10px;
+                flex-direction: row;
+                width: auto;
+            }
+            
+            .time-display {
+                font-size: 0.75rem;
+                min-width: 130px;
+                padding: 8px 12px;
+            }
+            
+            .dark-mode-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .mode-toggle-container {
+                position: relative;
+                top: 0;
+                right: 0;
+                flex-direction: row;
+                justify-content: center;
+                margin: 1.5rem auto;
+                width: 100%;
+            }
+            
+            .time-display {
+                order: 1;
+            }
+            
+            .dark-mode-btn {
+                order: 2;
+            }
+            
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .service-card {
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <div class="logo" style="font-size: 1.8rem; color: var(--primary-color);">EMBUX</div>
+            
+            <div class="mobile-menu" id="mobileMenu">
+                <i class="fas fa-bars"></i>
+            </div>
+    <!-- Dark Mode Toggle & Time Display -->
+            <div class="mode-toggle-container">
+            <div class="" id="">
+            </div>
+            <button class="dark-mode-btn" id="darkModeToggle" aria-label="Toggle dark mode">
+            <i class="fas fa-moon"></i>
+            </button>
+        </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#accounts">Dollar buy/sell</a></li>
+                <li><a href="#channel">Telegram Channel</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content container" id="home">
+        <!-- Services Section -->
+        <section id="services">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Explore our wide range of services for earning opportunities</p>
+            </div>
+            <div class="services-grid">
+                <!-- Facebook Marketing Website -->
+                <div class="service-card">
+                    <div class="service-header" style="background: linear-gradient(45deg, #1877F2, #0A5BC4);">
+                        <i class="fab fa-facebook"></i>
+                        <h3>Facebook Account sell Website</h3>
+                    </div>
+                    <div class="service-content">
+                        <p>Facebook accounts sell Instant payouts and repeatable jobs available 24/7.</p>
+                        <a href="https://mdamirulislam8504.github.io/FB-EMBUX.io/" target="_blank" class="visit-btn">Visit Website</a>
+                    </div>
+                </div>
+                
+                <!-- Instagram Account Selling Website -->
+                <div class="service-card">
+                    <div class="service-header instagram-bg">
+                        <i class="fab fa-instagram"></i>
+                        <h3>Instagram Account sell Website</h3>
+                    </div>
+                    <div class="service-content">
+                        <p>Instant payouts
+                        EmBux - Earn on simple tasks. Instant payouts, repeatable jobs, and real rewards.</p>
+                        <a href="http://embux.io/?ref=289" target="_blank" class="visit-btn">Visit Website</a>
+                    </div>
+                </div>
+                
+                <!-- Gmail Account Selling Bot -->
+                <div class="service-card">
+                    <div class="service-header gmail-bg">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Gmail Account sell</h3>
+                    </div>
+                    <div class="service-content">
+                        <p>Earn money by completing simple tasks on Telegram. Instant payouts and repeatable jobs available 24/7.</p>
+                        <a href="https://t.me/easy_money_bux_bot?start=7148933505" target="_blank" class="visit-btn">Start Earning</a>
+                    </div>
+                </div>
+                
+                <!-- Gmail Account Selling Bot -->
+                <div class="service-card">
+                    <div class="service-header gmail-bg">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Gmail Account sell Telegram Bot</h3>
+                    </div>
+                    <div class="service-content">
+                        <p>Earn money by completing simple tasks on Telegram. Instant payouts and repeatable jobs available 24/7.</p>
+                        <a href="https://t.me/GmailFarmerBot?start=7148933505" target="_blank" class="visit-btn">Start Earning</a>
+                    </div>
+                </div>
+                
+                <!-- Gmail Account Selling Bot -->
+                <div class="service-card">
+                    <div class="service-header gmail-bg">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Gmail Account sell Telegram Bot Pro</h3>
+                    </div>
+                    <div class="service-content">
+                        <p>Earn money by completing simple tasks on Telegram. Instant payouts and repeatable jobs available 24/7.</p>
+                        <a href="https://t.me/GmailFProBot?start=7148933505" target="_blank" class="visit-btn">Start Earning</a>
+                    </div>
+                </div>
+                
+                <!-- Telegram Bot: EasyFarmerBux -->
+                <div class="service-card">
+                    <div class="service-header telegram-bg">
+                        <i class="fab fa-telegram"></i>
+                        <h3>Instagram Account sell Telegram Bot</h3>
+                    </div>
+                    <div class="service-content">
+                        <p>Earn money by completing simple tasks on Telegram. Instant payouts and repeatable jobs available 24/7.</p>
+                        <a href="https://t.me/easyfarmerbux_bot?start=7148933505" target="_blank" class="visit-btn">Start Earning</a>
+                    </div>
+                </div>
+                
+                <!-- Telegram Bot: GoFastBux -->
+                <div class="service-card">
+                    <div class="service-header telegram-bg">
+                        <i class="fab fa-telegram"></i>
+                        <h3>Twitter Account sell Telegram Bot</h3>
+                    </div>
+                    <div class="service-content">
+                        <p>Earn money by completing simple tasks on Telegram. Instant payouts and repeatable jobs available 24/7.</p>
+                        <a href="https://t.me/gofastbux_bot?start=7148933505" target="_blank" class="visit-btn">Start Earning</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Account Types Section -->
+        <section id="accounts">
+            <div class="section-title">
+                <h2>Dollar buy/sell</h2>
+                <p>Welcome to our exchange platform! We have been providing dollar buy-sell services with utmost honesty for a long time. We are a reliable medium for freelancers to cash out their hard-earned income at the right price and in the fastest time.</p>
+            </div>
+            
+            <div class="account-types">
+                <div class="service-card">
+                    <div class="service-header gmail-bg">
+                        <i class="fas fa-dollar-sign"></i>
+                        <h3> Dollar buy/sell website</h3>
+                    </div>
+                    <div class="service-content">
+                        <p>Exchange your dollars at the best rates in the market. Secure, fast, and reliable transactions for freelancers and businesses.</p>
+                        <a href="https://mdamirulislam8504.github.io/DollarValy.io/" target="_blank" class="visit-btn">Visit Website</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Telegram Channel Section -->
+        <section id="channel">
+            <div class="section-title">
+                <h2>Join Our Telegram Channel</h2>
+                <p>Stay updated with the latest offers, new earning methods, and exclusive deals</p>
+            </div>
+            
+            <div class="service-card" style="max-width: 700px; margin: 0 auto;">
+                <div class="service-header telegram-bg">
+                    <i class="fab fa-telegram-plane"></i>
+                    <h3>EMBUX Telegram Channel</h3>
+                </div>
+                <div class="service-content">
+                    <p>Join our official Telegram channel to get regular updates about new earning opportunities, account listings, and exclusive promotions. Be the first to know about new features and platforms.</p>
+                    <a href="https://t.me/EMBUX8504" target="_blank" class="visit-btn">
+                        <i class="fab fa-telegram-plane"></i> Join EMBUX Channel
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">EMBUX</div>
+                    <p>EmBux — Earn on simple tasks. Instant payouts, repeatable jobs, and real rewards.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="http://embux.io/?ref=289" target="_blank">Instagram account sell website </a></li>
+                        <li><a href="https://t.me/gofastbux_bot?start=7148933505" target="_blank">GoFastBux Bot</a></li>
+                        <li><a href="https://t.me/easyfarmerbux_bot?start=7148933505" target="_blank">EasyFarmerBux Bot</a></li>
+                        <li><a href="https://t.me/easy_money_bux_bot?start=7148933505" target="_blank">Gmail Account Bot</a></li>
+                        <li><a href="https://mdamirulislam8504.github.io/FB-EMBUX.io/" target="_blank">Facebook account sell website </a></li>
+                        <li><a href="https://t.me/EMBUX8504" target="_blank">Telegram Channel</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Dollar buy/sell</h4>
+                    <ul>
+                        <li><a href="#accounts">Dollar buy/sell website</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2026 EMBUX - Your Path to Financial Freedom from Home. All rights reserved.
+                </p>
+                <p>Powered by Alex James</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.querySelector('i').classList.toggle('fa-bars');
+            mobileMenu.querySelector('i').classList.toggle('fa-times');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenu.querySelector('i').classList.add('fa-bars');
+                mobileMenu.querySelector('i').classList.remove('fa-times');
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Enhanced Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const darkModeIcon = darkModeToggle.querySelector('i');
+        
+        // Check for saved dark mode preference
+        const savedMode = localStorage.getItem('darkMode');
+        if (savedMode === 'enabled') {
+            document.body.classList.add('dark-mode');
+            darkModeIcon.classList.remove('fa-moon');
+            darkModeIcon.classList.add('fa-sun');
+            darkModeToggle.setAttribute('aria-label', 'Toggle light mode');
+        }
+        
+        darkModeToggle.addEventListener('click', () => {
+            // Add ripple effect
+            const ripple = document.createElement('span');
+            const rect = darkModeToggle.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = event.clientX - rect.left - size / 2;
+            const y = event.clientY - rect.top - size / 2;
+            
+            ripple.style.cssText = `
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.5);
+                transform: scale(0);
+                animation: ripple-animation 0.6s linear;
+                width: ${size}px;
+                height: ${size}px;
+                top: ${y}px;
+                left: ${x}px;
+            `;
+            
+            darkModeToggle.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+            
+            // Toggle dark mode
+            document.body.classList.toggle('dark-mode');
+            
+            // Update icon with animation
+            darkModeIcon.style.transform = 'rotate(360deg) scale(0)';
+            setTimeout(() => {
+                if (document.body.classList.contains('dark-mode')) {
+                    darkModeIcon.classList.remove('fa-moon');
+                    darkModeIcon.classList.add('fa-sun');
+                    localStorage.setItem('darkMode', 'enabled');
+                    darkModeToggle.setAttribute('aria-label', 'Toggle light mode');
+                } else {
+                    darkModeIcon.classList.remove('fa-sun');
+                    darkModeIcon.classList.add('fa-moon');
+                    localStorage.setItem('darkMode', 'disabled');
+                    darkModeToggle.setAttribute('aria-label', 'Toggle dark mode');
+                }
+                darkModeIcon.style.transform = 'rotate(0) scale(1)';
+            }, 300);
+        });
+        
+        // Add CSS for ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple-animation {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Improved Time Display Function (UTC+6)
+        function updateTime() {
+            const now = new Date();
+            
+            // Create time for UTC+6 (Bangladesh Standard Time)
+            const utcTime = now.getTime() + (now.getTimezoneOffset() * 60000);
+            const bdTime = new Date(utcTime + (3600000 * 6)); // UTC+6
+            
+            // Format time
+            let hours = bdTime.getHours();
+            const minutes = bdTime.getMinutes().toString().padStart(2, '0');
+            const seconds = bdTime.getSeconds().toString().padStart(2, '0');
+            
+            // Determine AM/PM
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            
+            // Convert to 12-hour format
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            
+            // Get date components
+            const day = bdTime.getDate().toString().padStart(2, '0');
+            const month = (bdTime.getMonth() + 1).toString().padStart(2, '0');
+            const year = bdTime.getFullYear();
+            
+            // Format date
+            const dateStr = `${day}/${month}/${year}`;
+            
+            // Update display
+            document.getElementById('timeDisplay').innerHTML = 
+                `<div>${hours}:${minutes}:${seconds} ${ampm}</div>` +
+                `<div>${dateStr} (UTC+6)</div>`;
+        }
+        
+        // Update time immediately and then every second
+        updateTime();
+        setInterval(updateTime, 1000);
+        
+        // Scroll animations for service cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe service cards for animation
+        document.querySelectorAll('.service-card').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Add parallax effect to header on scroll
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            const header = document.querySelector('header');
+            
+            if (scrollPosition < 500) {
+                header.style.transform = `translateY(${scrollPosition * 0.3}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
+</html>
